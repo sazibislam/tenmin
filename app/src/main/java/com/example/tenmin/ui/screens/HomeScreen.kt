@@ -40,7 +40,6 @@ fun HomeScreen(
   val weatherState by viewmodel.weatherState.collectAsState()
 
   viewmodel.getWeatherData(selectedZila)
-  println("weatherState $weatherState")
 
   SearchTopBar(onSearchClick = navigateToSearch)
 
@@ -49,11 +48,20 @@ fun HomeScreen(
     horizontalAlignment = Alignment.CenterHorizontally
   ) {
 
+    println("weatherState $weatherState")
+
+    var description = ""
+    var temp = "22°C"
+    weatherState?.data?.get(0)?.let { weatherData ->
+      description = weatherData.weather?.get(0)?.description ?: "Partly Cloudy"
+      temp = "${weatherData.temp}"
+    }
+
     selectedZila?.let { zila ->
       WeatherHomeScreen(
         location = "${zila.name}, ${zila.country}",
-        temperature = "22°C",
-        weatherDescription = "Partly Cloudy",
+        temperature = temp,
+        weatherDescription = description,
         weatherIcon = R.drawable.ic_weather, // Replace with your drawable resource
         humidity = "65%",
         windSpeed = "15 km/h"
@@ -85,7 +93,7 @@ fun WeatherHomeScreen(
   location: String,
   temperature: String,
   weatherDescription: String,
-  weatherIcon: Int, // Drawable resource ID for the weather icon
+  weatherIcon: Int,
   humidity: String,
   windSpeed: String
 ) {
