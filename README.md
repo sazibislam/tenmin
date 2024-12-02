@@ -2,7 +2,7 @@
 ![](screenshots/sample1.jpg)
 
 ## Requirements
-- Android Studio Flamingo or later
+- Android Studio Koala or Higher
 
 ## Tech Stack
 - Jetpack Compose
