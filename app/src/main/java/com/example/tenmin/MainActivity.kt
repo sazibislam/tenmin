@@ -21,24 +21,17 @@ class MainActivity : ComponentActivity() {
   override fun onCreate(savedInstanceState: Bundle?) {
     super.onCreate(savedInstanceState)
     setContent {
-      MainScreen()
-      InitData()
+      SimpleNavComposeAppTheme {
+        MainScreen()
+      }
     }
-  }
-
-  @Composable
-  fun InitData() {
-    val zilaList by viewModel.zilaList.collectAsState()
-    println(zilaList)
   }
 
   @Composable
   private fun MainScreen() {
-    SimpleNavComposeAppTheme {
-      val navController = rememberNavController()
-      val zilaList by viewModel.zilaList.collectAsState()
-      NavGraph(navController, zilaList, sharedViewModel)
-    }
+    val navController = rememberNavController()
+    val zilaList by viewModel.zilaList.collectAsState()
+    NavGraph(navController, zilaList, sharedViewModel)
   }
 }
 

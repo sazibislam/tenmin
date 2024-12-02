@@ -25,21 +25,24 @@ import androidx.compose.ui.Modifier
 import androidx.compose.ui.res.painterResource
 import androidx.compose.ui.unit.dp
 import com.example.simplenavigationcompose.R
+import com.example.tenmin.ui.MainViewModel
 import com.example.tenmin.ui.SharedViewModel
+import org.koin.androidx.compose.koinViewModel
 
 @Composable
 fun HomeScreen(
   navigateToSearch: () -> Unit,
-  sharedViewModel: SharedViewModel
+  sharedViewModel: SharedViewModel,
+  viewmodel: MainViewModel = koinViewModel()
 ) {
 
-  SearchTopBar(onSearchClick = navigateToSearch)
-
   val selectedZila by sharedViewModel.selectedZila.collectAsState()
-  val weatherState by sharedViewModel.weatherState.collectAsState()
+  val weatherState by viewmodel.weatherState.collectAsState()
 
+  viewmodel.getWeatherData(selectedZila)
   println("weatherState $weatherState")
-  //set the updated data to the list
+
+  SearchTopBar(onSearchClick = navigateToSearch)
 
   Column(
     modifier = Modifier.fillMaxWidth(),
