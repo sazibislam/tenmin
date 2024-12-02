@@ -29,27 +29,32 @@ import com.example.tenmin.ui.model.Zila
 import kotlinx.coroutines.flow.StateFlow
 
 @Composable
-fun HomeScreen(navigateToSearch: () -> Unit, selectedZila: StateFlow<Zila?>) {
+fun HomeScreen(
+  navigateToSearch: () -> Unit,
+  selectedZila: StateFlow<Zila?>
+) {
 
   SearchTopBar(onSearchClick = navigateToSearch)
 
   val selectedZila by selectedZila.collectAsState()
 
-  println("Home Screen: $selectedZila")
+  //api call to get data
 
   Column(
     modifier = Modifier.fillMaxWidth(),
     horizontalAlignment = Alignment.CenterHorizontally
   ) {
 
-    WeatherHomeScreen(
-      location = "Dhaka City",
-      temperature = "22°C",
-      weatherDescription = "Partly Cloudy",
-      weatherIcon = R.drawable.ic_weather, // Replace with your drawable resource
-      humidity = "65%",
-      windSpeed = "15 km/h"
-    )
+    selectedZila?.let { zila ->
+      WeatherHomeScreen(
+        location = "${zila.name}, ${zila.country}",
+        temperature = "22°C",
+        weatherDescription = "Partly Cloudy",
+        weatherIcon = R.drawable.ic_weather, // Replace with your drawable resource
+        humidity = "65%",
+        windSpeed = "15 km/h"
+      )
+    }
   }
 }
 

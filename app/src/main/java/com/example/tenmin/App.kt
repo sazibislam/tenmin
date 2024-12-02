@@ -20,8 +20,7 @@ class App : Application() {
         appModule,
         networkModule,
         repositoryModule,
-        viewModelModule,
-        // useCaseModule,
+        viewModelModule
       )
     }
   }

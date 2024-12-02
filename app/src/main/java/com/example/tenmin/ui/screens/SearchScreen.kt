@@ -25,6 +25,7 @@ import androidx.compose.ui.Alignment
 import androidx.compose.ui.Modifier
 import androidx.compose.ui.text.style.TextAlign
 import androidx.compose.ui.unit.dp
+import com.example.tenmin.ui.MainViewModel
 import com.example.tenmin.ui.SharedViewModel
 import com.example.tenmin.ui.model.Zila
 
