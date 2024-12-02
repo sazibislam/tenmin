@@ -5,33 +5,36 @@ import androidx.navigation.NavGraphBuilder
 import androidx.navigation.NavHostController
 import androidx.navigation.compose.NavHost
 import androidx.navigation.compose.composable
+import com.example.tenmin.ui.SharedViewModel
 import com.example.tenmin.ui.model.Zila
 import com.example.tenmin.ui.screens.HomeScreen
 import com.example.tenmin.ui.screens.SearchScreen
 
 @Composable
-fun NavGraph(navController: NavHostController, zilaList: List<Zila>) {
+fun NavGraph(navController: NavHostController, zilaList: List<Zila>, sharedViewModel: SharedViewModel) {
 
   NavHost(
     navController = navController,
     startDestination = NavRoute.Home.path
   ) {
-    addHomeScreen(navController, this)
+    addHomeScreen(navController, this, sharedViewModel)
 
-    addSearchScreen(navController, this, zilaList)
+    addSearchScreen(navController, this, zilaList, sharedViewModel)
   }
 }
 
 private fun addHomeScreen(
   navController: NavHostController,
-  navGraphBuilder: NavGraphBuilder
+  navGraphBuilder: NavGraphBuilder,
+  sharedViewModel: SharedViewModel
 ) {
   navGraphBuilder.composable(route = NavRoute.Home.path) {
 
     HomeScreen(
       navigateToSearch = {
         navController.navigate(NavRoute.Search.withArgs())
-      }
+      },
+      selectedZila = sharedViewModel.selectedZila
     )
   }
 }
@@ -39,7 +42,8 @@ private fun addHomeScreen(
 private fun addSearchScreen(
   navController: NavHostController,
   navGraphBuilder: NavGraphBuilder,
-  zilaList: List<Zila>
+  zilaList: List<Zila>,
+  sharedViewModel: SharedViewModel
 ) {
   navGraphBuilder.composable(
     route = NavRoute.Search.withArgsFormat(),
@@ -48,6 +52,8 @@ private fun addSearchScreen(
 
     SearchScreen(
       popBackStack = { navController.popBackStack() },
+      zilaList = zilaList,
+      sharedViewModel
     )
   }
 }

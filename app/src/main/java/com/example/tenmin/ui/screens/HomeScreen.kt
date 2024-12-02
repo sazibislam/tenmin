@@ -18,16 +18,24 @@ import androidx.compose.material.TopAppBar
 import androidx.compose.material.icons.Icons
 import androidx.compose.material.icons.filled.Search
 import androidx.compose.runtime.Composable
+import androidx.compose.runtime.collectAsState
+import androidx.compose.runtime.getValue
 import androidx.compose.ui.Alignment
 import androidx.compose.ui.Modifier
 import androidx.compose.ui.res.painterResource
 import androidx.compose.ui.unit.dp
 import com.example.simplenavigationcompose.R
+import com.example.tenmin.ui.model.Zila
+import kotlinx.coroutines.flow.StateFlow
 
 @Composable
-fun HomeScreen(navigateToSearch: () -> Unit) {
+fun HomeScreen(navigateToSearch: () -> Unit, selectedZila: StateFlow<Zila?>) {
 
   SearchTopBar(onSearchClick = navigateToSearch)
+
+  val selectedZila by selectedZila.collectAsState()
+
+  println("Home Screen: $selectedZila")
 
   Column(
     modifier = Modifier.fillMaxWidth(),

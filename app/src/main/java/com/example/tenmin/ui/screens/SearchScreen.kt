@@ -1,5 +1,6 @@
 package com.example.tenmin.ui.screens
 
+import androidx.compose.foundation.clickable
 import androidx.compose.foundation.layout.Box
 import androidx.compose.foundation.layout.Column
 import androidx.compose.foundation.layout.PaddingValues
@@ -16,7 +17,6 @@ import androidx.compose.material.MaterialTheme
 import androidx.compose.material.Text
 import androidx.compose.material.TextField
 import androidx.compose.runtime.Composable
-import androidx.compose.runtime.collectAsState
 import androidx.compose.runtime.getValue
 import androidx.compose.runtime.mutableStateOf
 import androidx.compose.runtime.remember
@@ -26,12 +26,13 @@ import androidx.compose.ui.Modifier
 import androidx.compose.ui.text.style.TextAlign
 import androidx.compose.ui.unit.dp
 import com.example.tenmin.ui.SharedViewModel
-import org.koin.androidx.compose.getViewModel
+import com.example.tenmin.ui.model.Zila
 
 @Composable
 fun SearchScreen(
   popBackStack: () -> Unit,
-  // viewModel: SharedViewModel = getViewModel()
+  zilaList: List<Zila>,
+  sharedViewModel: SharedViewModel
 ) {
 
   // val fullList by viewModel.zilaList.collectAsState()
@@ -42,9 +43,11 @@ fun SearchScreen(
       .padding(16.dp)
   ) {
 
-    val fullList = listOf("Dhaka", "Chittagong", "Khulna", "Sylhet", "Barisal", "Rangpur")
+    // val fullList = listOf("Dhaka", "Chittagong", "Khulna", "Sylhet", "Barisal", "Rangpur")
     var query by remember { mutableStateOf("") }
-    val filteredList = fullList.filter { it.contains(query, ignoreCase = true) }
+    val filteredList = zilaList.filter { it.name.contains(query, ignoreCase = true) }
+
+    println("Zila list : $zilaList")
 
     Column(
       modifier = Modifier
@@ -67,12 +70,16 @@ fun SearchScreen(
         modifier = Modifier.fillMaxWidth(),
         contentPadding = PaddingValues(horizontal = 8.dp)
       ) {
-        items(filteredList.size) { zila ->
+        items(filteredList.size) { index ->
 
           Card(
             modifier = Modifier
               .padding(8.dp)
-              .size(100.dp, 50.dp),
+              .size(100.dp, 50.dp)
+              .clickable {
+                sharedViewModel.setSelectedZila(filteredList[index])
+                popBackStack()
+              },
             elevation = 0.dp,
             shape = RoundedCornerShape(8.dp),
             backgroundColor = MaterialTheme.colors.primary.copy(alpha = 0.1f)
@@ -80,7 +87,7 @@ fun SearchScreen(
             Box(contentAlignment = Alignment.Center) {
 
               Text(
-                text = filteredList[zila],
+                text = filteredList[index].name,
                 style = MaterialTheme.typography.body1,
                 textAlign = TextAlign.Center,
                 color = MaterialTheme.colors.primary

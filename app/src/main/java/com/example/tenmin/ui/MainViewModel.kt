@@ -5,8 +5,11 @@ import androidx.lifecycle.ViewModel
 import androidx.lifecycle.viewModelScope
 import com.example.tenmin.data.ResponseResource
 import com.example.tenmin.domain.repository.HomeRepository
+import com.example.tenmin.ui.model.Zila
 import com.example.tenmin.utils.AppConstants.APP_SUCCESS_MESSAGE
 import com.example.tenmin.utils.networking.State
+import kotlinx.coroutines.flow.MutableStateFlow
+import kotlinx.coroutines.flow.StateFlow
 import kotlinx.coroutines.launch
 
 class MainViewModel(
@@ -16,6 +19,13 @@ class MainViewModel(
 
   init {
     getWeatherData()
+  }
+
+  private val _selectedZila = MutableStateFlow<Zila?>(null)
+  val selectedZila: StateFlow<Zila?> = _selectedZila
+
+  fun setSelectedZila(zila: Zila) {
+    _selectedZila.value = zila
   }
 
   private fun getWeatherData() {
