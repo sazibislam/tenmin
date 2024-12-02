@@ -25,20 +25,21 @@ import androidx.compose.ui.Modifier
 import androidx.compose.ui.res.painterResource
 import androidx.compose.ui.unit.dp
 import com.example.simplenavigationcompose.R
-import com.example.tenmin.ui.model.Zila
-import kotlinx.coroutines.flow.StateFlow
+import com.example.tenmin.ui.SharedViewModel
 
 @Composable
 fun HomeScreen(
   navigateToSearch: () -> Unit,
-  selectedZila: StateFlow<Zila?>
+  sharedViewModel: SharedViewModel
 ) {
 
   SearchTopBar(onSearchClick = navigateToSearch)
 
-  val selectedZila by selectedZila.collectAsState()
+  val selectedZila by sharedViewModel.selectedZila.collectAsState()
+  val weatherState by sharedViewModel.weatherState.collectAsState()
 
-  //api call to get data
+  println("weatherState $weatherState")
+  //set the updated data to the list
 
   Column(
     modifier = Modifier.fillMaxWidth(),
