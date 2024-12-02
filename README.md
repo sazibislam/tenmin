@@ -1,4 +1,4 @@
-# Simple Jetpack Compose Navigation Example
+# Jetpack Compose Navigation Example
 ![](screenshots/sample1.jpg)
 
 ## Requirements
@@ -11,6 +11,38 @@
 - Clean Architecture
 - Ktor
 - Koin DI
+
+## Features:
+- Home Screen:
+    - Displays weather based on the device's current location.
+    - Shows temperature, weather condition, and icons.
+- Search Feature:
+   - Search for a Zila.
+    - Update the weather on the Home Screen based on the selected Zila.
+
+## Development Guidelines:
+ # Architecture:
+
+    Use Clean Architecture with layers:
+    Data Layer: Handles API and JSON.
+    Domain Layer: Business logic (weather fetching).
+    Presentation Layer: UI with Jetpack Compose.
+    Dependency Injection:
+
+    Use Koin for dependency management (e.g., ViewModel, HttpClient).
+# UI Framework:
+
+    Leverage Jetpack Compose with Material Design.
+    Implement dynamic lists (e.g., LazyColumn).
+# Navigation:
+
+    Use Compose Navigation for screen transitions:
+    Home Screen → Search Screen → Back to Home Screen with updated data.
+
+# Implementation:
+    Data Layer: Fetch weather from OpenWeather API and parse Zila JSON.
+    UI: Display weather, search for Zila, and update the Home Screen.
+    State Management: Use ViewModel to manage UI state and weather data.
 
 ## Articles
 - [Open Api Weather](https://openweathermap.org/api)
