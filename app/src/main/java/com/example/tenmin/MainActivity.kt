@@ -30,14 +30,18 @@ class MainActivity : ComponentActivity() {
     val zilaList by viewModel.zilaList.collectAsState()
     println(zilaList)
   }
-}
 
-@Composable
-private fun MainScreen() {
-  SimpleNavComposeAppTheme {
-    val navController = rememberNavController()
-    NavGraph(navController)
+  @Composable
+  private fun MainScreen() {
+    SimpleNavComposeAppTheme {
+      val navController = rememberNavController()
+      val zilaList by viewModel.zilaList.collectAsState()
+
+      NavGraph(navController, zilaList)
+    }
   }
 }
+
+
 
 

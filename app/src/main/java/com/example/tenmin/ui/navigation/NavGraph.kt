@@ -5,11 +5,12 @@ import androidx.navigation.NavGraphBuilder
 import androidx.navigation.NavHostController
 import androidx.navigation.compose.NavHost
 import androidx.navigation.compose.composable
+import com.example.tenmin.ui.model.Zila
 import com.example.tenmin.ui.screens.HomeScreen
 import com.example.tenmin.ui.screens.SearchScreen
 
 @Composable
-fun NavGraph(navController: NavHostController) {
+fun NavGraph(navController: NavHostController, zilaList: List<Zila>) {
 
   NavHost(
     navController = navController,
@@ -17,7 +18,7 @@ fun NavGraph(navController: NavHostController) {
   ) {
     addHomeScreen(navController, this)
 
-    addSearchScreen(navController, this)
+    addSearchScreen(navController, this, zilaList)
   }
 }
 
@@ -37,7 +38,8 @@ private fun addHomeScreen(
 
 private fun addSearchScreen(
   navController: NavHostController,
-  navGraphBuilder: NavGraphBuilder
+  navGraphBuilder: NavGraphBuilder,
+  zilaList: List<Zila>
 ) {
   navGraphBuilder.composable(
     route = NavRoute.Search.withArgsFormat(),
