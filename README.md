@@ -53,6 +53,7 @@
 
 ## Branches
 - [master](https://github.com/sazibislam/tenmin) - Basic Compose Navigation
+- [medium](https://medium.com/@sazib/jetpack-compose-navigation-c6e43e08ffdc) - Basic Compose Navigation
 
 ## License
 ```

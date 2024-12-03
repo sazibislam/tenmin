@@ -1,9 +1,8 @@
 package com.example.tenmin.utils.networking
 
-import com.sazib.tenmin.utils.networking.Status
-import com.sazib.tenmin.utils.networking.Status.ERROR
-import com.sazib.tenmin.utils.networking.Status.LOADING
-import com.sazib.tenmin.utils.networking.Status.SUCCESS
+import com.example.tenmin.utils.networking.Status.ERROR
+import com.example.tenmin.utils.networking.Status.LOADING
+import com.example.tenmin.utils.networking.Status.SUCCESS
 
 data class State<out T>(
   val status: Status,

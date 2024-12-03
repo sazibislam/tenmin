@@ -25,7 +25,6 @@ import androidx.compose.ui.Alignment
 import androidx.compose.ui.Modifier
 import androidx.compose.ui.text.style.TextAlign
 import androidx.compose.ui.unit.dp
-import com.example.tenmin.ui.MainViewModel
 import com.example.tenmin.ui.SharedViewModel
 import com.example.tenmin.ui.model.Zila
 
@@ -36,15 +35,12 @@ fun SearchScreen(
   sharedViewModel: SharedViewModel
 ) {
 
-  // val fullList by viewModel.zilaList.collectAsState()
-
   Column(
     modifier = Modifier
       .fillMaxSize()
       .padding(16.dp)
   ) {
 
-    // val fullList = listOf("Dhaka", "Chittagong", "Khulna", "Sylhet", "Barisal", "Rangpur")
     var query by remember { mutableStateOf("") }
     val filteredList = zilaList.filter { it.name.contains(query, ignoreCase = true) }
 

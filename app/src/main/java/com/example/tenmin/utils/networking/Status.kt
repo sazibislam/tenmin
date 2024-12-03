@@ -1,4 +1,4 @@
-package com.sazib.tenmin.utils.networking
+package com.example.tenmin.utils.networking
 
 enum class Status {
   SUCCESS,

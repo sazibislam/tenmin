@@ -10,6 +10,7 @@ import com.example.tenmin.ui.model.Zila
 import kotlinx.coroutines.Dispatchers
 import kotlinx.coroutines.flow.MutableStateFlow
 import kotlinx.coroutines.flow.StateFlow
+import kotlinx.coroutines.flow.collectLatest
 import kotlinx.coroutines.launch
 
 class MainViewModel(
@@ -25,7 +26,7 @@ class MainViewModel(
 
     viewModelScope.launch(Dispatchers.IO) {
       selectedZila?.coord?.let { cord ->
-        repository.getWeatherData(cord).collect { response ->
+        repository.getWeatherData(cord).collectLatest { response ->
           when (response) {
             is ResponseResource.Error -> {
               Log.d("MainViewModel", "Some error happened ${response.errorMessage}")
