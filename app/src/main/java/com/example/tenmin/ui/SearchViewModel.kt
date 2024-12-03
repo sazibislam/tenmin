@@ -3,7 +3,7 @@ package com.example.tenmin.ui
 import android.app.Application
 import androidx.lifecycle.AndroidViewModel
 import androidx.lifecycle.viewModelScope
-import com.example.simplenavigationcompose.R
+import com.example.tenmin.R
 import com.example.tenmin.ui.model.Zila
 import com.google.gson.Gson
 import com.google.gson.reflect.TypeToken

@@ -4,12 +4,12 @@ plugins {
 }
 
 android {
-    compileSdk 33
+    compileSdk 35
 
     defaultConfig {
         applicationId "com.example.tenmin"
         minSdk 21
-        targetSdk 33
+        targetSdk 35
         versionCode 1
         versionName "1.0"
 
@@ -43,22 +43,24 @@ android {
             excludes += '/META-INF/{AL2.0,LGPL2.1}'
         }
     }
-    namespace 'com.example.simplenavigationcompose'
+    namespace 'com.example.tenmin'
 }
 
 dependencies {
 
-    implementation 'androidx.core:core-ktx:1.10.0'
-    def compose_version = '1.4.1'
+    def compose_version = '1.7.5'
     implementation "androidx.compose.ui:ui:$compose_version"
     implementation "androidx.compose.material:material:$compose_version"
+    implementation "androidx.compose.material:material-icons-extended:$compose_version"
     implementation "androidx.compose.ui:ui-tooling-preview:$compose_version"
-    implementation 'androidx.lifecycle:lifecycle-runtime-ktx:2.6.1'
-    implementation 'androidx.activity:activity-compose:1.7.0'
-    implementation "com.google.accompanist:accompanist-systemuicontroller:0.28.0"
-    implementation "androidx.navigation:navigation-compose:2.5.3"
     debugImplementation "androidx.compose.ui:ui-tooling:$compose_version"
-    implementation "com.google.code.gson:gson:2.10.1"
+
+    implementation libs.core.ktx
+    implementation libs.lifecycle.runtime.ktx
+    implementation libs.activity.compose
+    implementation libs.accompanist.systemuicontroller
+    implementation libs.navigation.compose
+    implementation libs.gson
 
     // Koin for Android
     implementation(libs.koin.koin.android)
@@ -74,5 +76,5 @@ dependencies {
     implementation (libs.ktor.serialization.kotlinx.json)
     implementation (libs.ktor.client.logging.jvm)
 
-    implementation ("androidx.annotation:annotation:1.5.0")
+    implementation (libs.annotation)
 }
