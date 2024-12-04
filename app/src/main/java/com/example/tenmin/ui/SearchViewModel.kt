@@ -31,16 +31,14 @@ class SearchViewModel(private val mApplication: Application) : AndroidViewModel(
     }
   }
 
-  private fun readZilasFromJson(): List<Zila>? {
-    return try {
-      val inputStream = mApplication.resources.openRawResource(R.raw.zila)
-      val jsonString = inputStream.bufferedReader().use(BufferedReader::readText)
-      val listType = object : TypeToken<List<Zila>>() {}.type
-      Gson().fromJson(jsonString, listType)
-    } catch (e: Exception) {
-      println(e.message)
-      null
-    }
+  private fun readZilasFromJson(): List<Zila>? = try {
+    val inputStream = mApplication.resources.openRawResource(R.raw.zila)
+    val jsonString = inputStream.bufferedReader().use(BufferedReader::readText)
+    val listType = object : TypeToken<List<Zila>>() {}.type
+    Gson().fromJson(jsonString, listType)
+  } catch (e: Exception) {
+    println(e.message)
+    null
   }
 
   // fun onQueryChanged(query: String) {

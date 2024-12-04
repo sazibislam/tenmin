@@ -8,6 +8,8 @@ import kotlinx.coroutines.flow.StateFlow
 
 class SharedViewModel : ViewModel() {
 
+  var zilaList: List<Zila>? = null
+
   private val _selectedZila = MutableStateFlow<Zila?>(getDefaultZila())
   val selectedZila: StateFlow<Zila?> = _selectedZila
 

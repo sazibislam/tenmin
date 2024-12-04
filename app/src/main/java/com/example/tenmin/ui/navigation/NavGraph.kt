@@ -6,14 +6,12 @@ import androidx.navigation.NavHostController
 import androidx.navigation.compose.NavHost
 import androidx.navigation.compose.composable
 import com.example.tenmin.ui.SharedViewModel
-import com.example.tenmin.ui.model.Zila
 import com.example.tenmin.ui.screens.HomeScreen
 import com.example.tenmin.ui.screens.SearchScreen
 
 @Composable
 fun NavGraph(
   navController: NavHostController,
-  zilaList: List<Zila>,
   sharedViewModel: SharedViewModel
 ) {
 
@@ -23,7 +21,7 @@ fun NavGraph(
   ) {
     addHomeScreen(navController, this, sharedViewModel)
 
-    addSearchScreen(navController, this, zilaList, sharedViewModel)
+    addSearchScreen(navController, this, sharedViewModel)
   }
 }
 
@@ -46,7 +44,6 @@ private fun addHomeScreen(
 private fun addSearchScreen(
   navController: NavHostController,
   navGraphBuilder: NavGraphBuilder,
-  zilaList: List<Zila>,
   sharedViewModel: SharedViewModel
 ) {
   navGraphBuilder.composable(
@@ -56,7 +53,6 @@ private fun addSearchScreen(
 
     SearchScreen(
       popBackStack = { navController.popBackStack() },
-      zilaList = zilaList,
       sharedViewModel
     )
   }

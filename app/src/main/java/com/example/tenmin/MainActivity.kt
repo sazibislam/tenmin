@@ -31,7 +31,8 @@ class MainActivity : ComponentActivity() {
   private fun MainScreen() {
     val navController = rememberNavController()
     val zilaList by viewModel.zilaList.collectAsState()
-    NavGraph(navController, zilaList, sharedViewModel)
+    sharedViewModel.zilaList = zilaList
+    NavGraph(navController, sharedViewModel)
   }
 }
 

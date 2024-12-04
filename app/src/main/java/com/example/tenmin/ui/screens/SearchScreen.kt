@@ -26,12 +26,10 @@ import androidx.compose.ui.Modifier
 import androidx.compose.ui.text.style.TextAlign
 import androidx.compose.ui.unit.dp
 import com.example.tenmin.ui.SharedViewModel
-import com.example.tenmin.ui.model.Zila
 
 @Composable
 fun SearchScreen(
   popBackStack: () -> Unit,
-  zilaList: List<Zila>,
   sharedViewModel: SharedViewModel
 ) {
 
@@ -41,6 +39,7 @@ fun SearchScreen(
       .padding(16.dp)
   ) {
 
+    val zilaList = sharedViewModel.zilaList ?: emptyList()
     var query by remember { mutableStateOf("") }
     val filteredList = zilaList.filter { it.name.contains(query, ignoreCase = true) }
 
