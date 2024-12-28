@@ -18,6 +18,9 @@ class HomeRepositoryImpl(
     emit(responseResource)
   }
 
+  /*
+  * Taking the first album from list
+  * */
   private fun getFirstAlbumById(albumList: List<AlbumResponse>): List<AlbumResponse> =
     albumList.groupBy { album -> album.albumId }.map { (_, albums) -> albums.first() }
 }
