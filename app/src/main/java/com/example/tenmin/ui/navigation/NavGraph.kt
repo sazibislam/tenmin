@@ -5,55 +5,32 @@ import androidx.navigation.NavGraphBuilder
 import androidx.navigation.NavHostController
 import androidx.navigation.compose.NavHost
 import androidx.navigation.compose.composable
-import com.example.tenmin.ui.SharedViewModel
-import com.example.tenmin.ui.screens.HomeScreen
-import com.example.tenmin.ui.screens.SearchScreen
+import com.example.tenmin.ui.screens.AlbumListViewScreen
 
 @Composable
 fun NavGraph(
-  navController: NavHostController,
-  sharedViewModel: SharedViewModel
+  navController: NavHostController
 ) {
 
   NavHost(
     navController = navController,
-    startDestination = NavRoute.Home.path
+    startDestination = NavRoute.Search.path
   ) {
-    addHomeScreen(navController, this, sharedViewModel)
-
-    addSearchScreen(navController, this, sharedViewModel)
-  }
-}
-
-private fun addHomeScreen(
-  navController: NavHostController,
-  navGraphBuilder: NavGraphBuilder,
-  sharedViewModel: SharedViewModel
-) {
-  navGraphBuilder.composable(route = NavRoute.Home.path) {
-
-    HomeScreen(
-      navigateToSearch = {
-        navController.navigate(NavRoute.Search.withArgs())
-      },
-      sharedViewModel
-    )
+    addSearchScreen(navController, this)
   }
 }
 
 private fun addSearchScreen(
   navController: NavHostController,
-  navGraphBuilder: NavGraphBuilder,
-  sharedViewModel: SharedViewModel
+  navGraphBuilder: NavGraphBuilder
 ) {
   navGraphBuilder.composable(
     route = NavRoute.Search.withArgsFormat(),
     arguments = listOf()
   ) { navBackStackEntry ->
 
-    SearchScreen(
-      popBackStack = { navController.popBackStack() },
-      sharedViewModel
+    AlbumListViewScreen(
+      popBackStack = { navController.popBackStack() }
     )
   }
 }

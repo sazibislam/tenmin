@@ -1,6 +1,7 @@
 plugins {
     id 'com.android.application'
     id 'org.jetbrains.kotlin.android'
+    id 'kotlinx-serialization'
 }
 
 android {
@@ -77,4 +78,12 @@ dependencies {
     implementation (libs.ktor.client.logging.jvm)
 
     implementation (libs.annotation)
+
+    //image loading library
+    implementation("io.coil-kt:coil-compose:2.4.0") // Use the latest version
+
+
+    //test
+    androidTestImplementation "androidx.compose.ui:ui-test-junit4::1.4.1"
+    debugImplementation "androidx.compose.ui:ui-test-manifest:1.7.6"
 }

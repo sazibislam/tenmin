@@ -13,6 +13,6 @@ sealed class ResponseResource<T> {
 
     companion object {
         fun <T> success(data: T) = Success(data)
-        fun <T> error(errorMessage: T) = Error<T>(errorMessage)
+        fun <T> error(errorMessage: T) = Error(errorMessage)
     }
 }
