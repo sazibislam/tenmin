@@ -1,5 +1,6 @@
 # Jetpack Compose Navigation Example
 ![](screenshots/sample1.png)
+![](screenshots/sample2.jpg)
 
 ## Requirements
 - Android Studio Koala or Higher
@@ -11,14 +12,15 @@
 - Clean Architecture
 - Ktor
 - Koin DI
+- Coil - Image loading library
+- Mockito
+- Espresso
 
 ## Features:
-- Home Screen:
-    - Displays weather based on the device's current location.
-    - Shows temperature, weather condition, and icons.
-- Search Feature:
-   - Search for a Zila.
-    - Update the weather on the Home Screen based on the selected Zila.
+- Samsung App Home:
+    - Displays a list of album.
+    - A list of photos, with the title of the photo, the photo as a thumbnail, the album name
+    - In the list, only show the first photo of each album.
 
 ## Development Guidelines:
  # Architecture:
@@ -40,9 +42,9 @@
     Home Screen → Search Screen → Back to Home Screen with updated data.
 
 # Implementation:
-    Data Layer: Fetch weather from OpenWeather API and parse Zila JSON.
-    UI: Display weather, search for Zila, and update the Home Screen.
-    State Management: Use ViewModel to manage UI state and weather data.
+    Data Layer: Fetch data of album Using https://jsonplaceholder.typicode.com/ api
+    UI: Display a list of album.
+    State Management: Use ViewModel to manage UI state and Album data.
 
 ## Articles
 - [Open Api Weather](https://openweathermap.org/api)
@@ -53,6 +55,7 @@
 
 ## Branches
 - [master](https://github.com/sazibislam/tenmin) - Basic Compose Navigation
+- [samsung](https://github.com/sazibislam/tenmin/tree/Samsung) - Test Case with a list of album
 - [medium](https://medium.com/@sazib/jetpack-compose-navigation-c6e43e08ffdc) - Basic Compose Navigation
 
 ## License
