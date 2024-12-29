@@ -39,7 +39,7 @@
 # Navigation:
 
     Use Compose Navigation for screen transitions:
-    Home Screen → Search Screen → Back to Home Screen with updated data.
+    Home Screen → Api Calling → Album list 
 
 # Implementation:
     Data Layer: Fetch data of album Using https://jsonplaceholder.typicode.com/ api
