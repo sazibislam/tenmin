@@ -1,5 +1,5 @@
 # Jetpack Compose Navigation Example
-![](screenshots/sample1.jpg)
+![](screenshots/sample1.png)
 
 ## Requirements
 - Android Studio Koala or Higher
