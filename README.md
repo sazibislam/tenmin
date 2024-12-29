@@ -54,7 +54,7 @@
 - [KTOR](https://ktor.io/)
 
 ## Branches
-- [master](https://github.com/sazibislam/tenmin) - Basic Compose Navigation
+- [master](https://github.com/sazibislam/tenmin) - Clean Architecture, Test Case
 - [samsung](https://github.com/sazibislam/tenmin/tree/Samsung) - Test Case with a list of album
 - [medium](https://medium.com/@sazib/jetpack-compose-navigation-c6e43e08ffdc) - Basic Compose Navigation
 
