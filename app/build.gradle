@@ -1,89 +1,125 @@
 plugins {
-    id 'com.android.application'
-    id 'org.jetbrains.kotlin.android'
-    id 'kotlinx-serialization'
+  id 'com.android.application'
+  id 'org.jetbrains.kotlin.android'
+  id 'kotlinx-serialization'
+  id 'org.jetbrains.kotlin.plugin.compose'
+  id 'kotlin-android'
+  id 'kotlin-kapt'
 }
 
 android {
-    compileSdk 35
+  compileSdk 35
 
-    defaultConfig {
-        applicationId "com.example.tenmin"
-        minSdk 21
-        targetSdk 35
-        versionCode 1
-        versionName "1.0"
+  defaultConfig {
+    applicationId "com.example.tenmin"
+    minSdk 26
+    targetSdk 35
+    versionCode 1
+    versionName "1.0"
 
-        testInstrumentationRunner "androidx.test.runner.AndroidJUnitRunner"
-        vectorDrawables {
-            useSupportLibrary true
-        }
+    testInstrumentationRunner "androidx.test.runner.AndroidJUnitRunner"
+    vectorDrawables {
+      useSupportLibrary true
     }
+  }
 
-    buildTypes {
-        release {
-            minifyEnabled false
-            proguardFiles getDefaultProguardFile('proguard-android-optimize.txt'), 'proguard-rules.pro'
-        }
+  buildTypes {
+    release {
+      minifyEnabled false
+      proguardFiles getDefaultProguardFile('proguard-android-optimize.txt'), 'proguard-rules.pro'
     }
-    compileOptions {
-        sourceCompatibility JavaVersion.VERSION_1_8
-        targetCompatibility JavaVersion.VERSION_1_8
+  }
+  compileOptions {
+    sourceCompatibility JavaVersion.VERSION_11
+    targetCompatibility JavaVersion.VERSION_11
+  }
+  kotlinOptions {
+    jvmTarget = '11'
+  }
+
+  buildFeatures {
+    compose true
+  }
+  composeOptions {
+    kotlinCompilerExtensionVersion '1.4.5'
+  }
+  packagingOptions {
+    resources {
+      excludes += "/META-INF/{AL2.0,LGPL2.1}"
+      merges += "META-INF/LICENSE.md"
+      merges += "META-INF/LICENSE-notice.md"
+
+//      excludes += [
+//          'META-INF/*',
+//          'license/*',
+//      ]
     }
-    kotlinOptions {
-        jvmTarget = '1.8'
-    }
-    buildFeatures {
-        compose true
-    }
-    composeOptions {
-        kotlinCompilerExtensionVersion '1.4.5'
-    }
-    packagingOptions {
-        resources {
-            excludes += '/META-INF/{AL2.0,LGPL2.1}'
-        }
-    }
-    namespace 'com.example.tenmin'
+  }
+  namespace 'com.example.tenmin'
 }
 
 dependencies {
 
-    def compose_version = '1.7.5'
-    implementation "androidx.compose.ui:ui:$compose_version"
-    implementation "androidx.compose.material:material:$compose_version"
-    implementation "androidx.compose.material:material-icons-extended:$compose_version"
-    implementation "androidx.compose.ui:ui-tooling-preview:$compose_version"
-    debugImplementation "androidx.compose.ui:ui-tooling:$compose_version"
+  def compose_version = '1.7.6'
+  implementation "androidx.compose.ui:ui:$compose_version"
+  implementation "androidx.compose.material:material:$compose_version"
+  implementation "androidx.compose.material:material-icons-extended:$compose_version"
+  implementation "androidx.compose.ui:ui-tooling-preview:$compose_version"
+  debugImplementation "androidx.compose.ui:ui-tooling:$compose_version"
 
-    implementation libs.core.ktx
-    implementation libs.lifecycle.runtime.ktx
-    implementation libs.activity.compose
-    implementation libs.accompanist.systemuicontroller
-    implementation libs.navigation.compose
-    implementation libs.gson
+  implementation libs.core.ktx
+  implementation libs.lifecycle.runtime.ktx
+  implementation libs.activity.compose
+  implementation libs.accompanist.systemuicontroller
+  implementation libs.navigation.compose
+  implementation libs.gson
 
-    // Koin for Android
-    implementation(libs.koin.koin.android)
-    implementation libs.koin.androidx.compose
+  // Koin for Android
+  implementation(libs.koin.koin.android)
+  implementation libs.koin.androidx.compose
 
-    // Ktor for Android
-    implementation (libs.ktor.client.core)
-    implementation (libs.ktor.client.cio)
-    implementation (libs.ktor.client.websockets)
-    implementation (libs.ktor.client.auth)
-    implementation (libs.ktor.client.serialization)
-    implementation (libs.ktor.client.content.negotiation)
-    implementation (libs.ktor.serialization.kotlinx.json)
-    implementation (libs.ktor.client.logging.jvm)
+  // Ktor for Android
 
-    implementation (libs.annotation)
+  implementation(libs.ktor.client.core)
+  implementation(libs.ktor.client.cio)
+  implementation(libs.ktor.client.websockets)
+  implementation(libs.ktor.client.auth)
+  implementation(libs.ktor.client.serialization)
+  implementation(libs.ktor.client.content.negotiation)
+  implementation(libs.ktor.serialization.kotlinx.json)
+  implementation(libs.ktor.client.logging.jvm)
 
-    //image loading library
-    implementation("io.coil-kt:coil-compose:2.4.0") // Use the latest version
+  implementation(libs.annotation)
 
+  //image loading library
+  implementation 'io.coil-kt:coil-compose:2.4.0' // Use the latest version
 
-    //test
-    androidTestImplementation "androidx.compose.ui:ui-test-junit4::1.4.1"
-    debugImplementation "androidx.compose.ui:ui-test-manifest:1.7.6"
+  //test
+  androidTestImplementation "androidx.compose.ui:ui-test-junit4:1.7.6"
+  debugImplementation "androidx.compose.ui:ui-test-manifest:1.7.6"
+  testImplementation libs.testng
+
+  // AndroidX Test dependencies
+  implementation 'androidx.test:core:1.6.1'
+  implementation 'androidx.test:runner:1.6.2'
+  implementation 'androidx.test:rules:1.6.1'
+
+  // JUnit dependencies
+  testImplementation 'junit:junit:4.13.2'
+  androidTestImplementation 'org.jetbrains.kotlin:kotlin-test:1.8.0'
+
+  // Mockito Kotlin extensions
+  debugImplementation 'org.mockito:mockito-android:5.6.0'
+  debugImplementation 'org.mockito.kotlin:mockito-kotlin:5.1.0'
+  debugImplementation 'org.mockito:mockito-core:5.5.0' // Core Mockito library
+
+  // MockK for mocking dependencies
+  debugImplementation 'io.mockk:mockk:1.13.5'
+  // Ktor client testing utilities
+  debugImplementation 'io.ktor:ktor-client-mock:3.0.3'
+
+  androidTestImplementation 'androidx.test.ext:junit:1.1.5'
+  androidTestImplementation 'androidx.test.espresso:espresso-core:3.5.1'
+
+  debugImplementation 'app.cash.turbine:turbine:0.12.1'
 }

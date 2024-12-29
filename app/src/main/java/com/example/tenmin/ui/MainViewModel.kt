@@ -18,11 +18,11 @@ class MainViewModel(
   private val _albumState = MutableStateFlow<List<AlbumResponse>?>(null)
   val albumState: StateFlow<List<AlbumResponse>?> = _albumState
 
-  init {
-    getAlbumData()
-  }
+  // init {
+  //   getAlbumData()
+  // }
 
-  private fun getAlbumData() {
+  fun getAlbumData() {
 
     viewModelScope.launch(Dispatchers.IO) {
       repository.getAlbumData().collectLatest { response ->

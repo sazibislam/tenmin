@@ -26,6 +26,7 @@ import androidx.compose.ui.Alignment
 import androidx.compose.ui.Modifier
 import androidx.compose.ui.graphics.Color
 import androidx.compose.ui.layout.ContentScale
+import androidx.compose.ui.platform.testTag
 import androidx.compose.ui.res.painterResource
 import androidx.compose.ui.text.font.FontWeight
 import androidx.compose.ui.unit.dp
@@ -39,6 +40,8 @@ import org.koin.androidx.compose.koinViewModel
   popBackStack: () -> Unit,
   viewmodel: MainViewModel = koinViewModel()
 ) {
+
+  viewmodel.getAlbumData()
 
   var loading by remember { mutableStateOf(true) }
   val albums by viewmodel.albumState.collectAsState()
@@ -57,7 +60,9 @@ import org.koin.androidx.compose.koinViewModel
     ) {
       if (loading) {
         // Show loading spinner
-        CircularProgressIndicator()
+        CircularProgressIndicator(
+          modifier = Modifier.testTag("loadingIndicator")
+        )
       } else {
 
         Column(modifier = Modifier.fillMaxSize()) {

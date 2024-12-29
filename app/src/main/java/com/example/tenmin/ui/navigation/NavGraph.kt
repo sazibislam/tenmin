@@ -14,7 +14,7 @@ fun NavGraph(
 
   NavHost(
     navController = navController,
-    startDestination = NavRoute.Search.path
+    startDestination = NavRoute.Album.path
   ) {
     addSearchScreen(navController, this)
   }
@@ -25,12 +25,10 @@ private fun addSearchScreen(
   navGraphBuilder: NavGraphBuilder
 ) {
   navGraphBuilder.composable(
-    route = NavRoute.Search.withArgsFormat(),
+    route = NavRoute.Album.withArgsFormat(),
     arguments = listOf()
   ) { navBackStackEntry ->
 
-    AlbumListViewScreen(
-      popBackStack = { navController.popBackStack() }
-    )
+    AlbumListViewScreen(popBackStack = { navController.popBackStack() })
   }
 }

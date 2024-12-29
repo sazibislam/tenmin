@@ -6,16 +6,17 @@ coreKtxVersion = "1.15.0"
 gsonVersion = "2.10.1"
 koinAndroidVersion = "3.2.0"
 koinAndroidxCompose = "3.2.0"
-ktorClientAuth = "2.1.0"
-ktorClientCio = "2.1.2"
-ktorClientContentNegotiation = "2.2.3"
-ktorClientCore = "2.2.3"
-ktorClientLoggingJvm = "2.1.2"
-ktorClientSerialization = "2.1.2"
+ktorClientAuth = "3.0.2"
+ktorClientCio = "3.0.3"
+ktorClientContentNegotiation = "3.0.3"
+ktorClientCore = "3.0.3"
+ktorClientLoggingJvm = "3.0.3"
+ktorClientSerialization = "3.0.3"
 ktorClientWebsockets = "2.1.2"
-ktorSerializationKotlinxJson = "2.0.0"
+ktorSerializationKotlinxJson = "3.0.3"
 lifecycleRuntimeKtxVersion = "2.8.7"
-navigationComposeVersion = "2.8.4"
+navigationComposeVersion = "2.8.5"
+testngVersion = "6.9.6"
 
 [libraries]
 
@@ -36,5 +37,7 @@ ktor-serialization-kotlinx-json = { module = "io.ktor:ktor-serialization-kotlinx
 koin-koin-android = { module = "io.insert-koin:koin-android", version.ref = "koinAndroidVersion" }
 lifecycle-runtime-ktx = { module = "androidx.lifecycle:lifecycle-runtime-ktx", version.ref = "lifecycleRuntimeKtxVersion" }
 navigation-compose = { module = "androidx.navigation:navigation-compose", version.ref = "navigationComposeVersion" }
+
+testng = { group = "org.testng", name = "testng", version.ref = "testngVersion" }
 [plugins]
 
