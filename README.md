@@ -47,7 +47,7 @@
     State Management: Use ViewModel to manage UI state and Album data.
 
 ## Articles
-- [Open Api Weather](https://openweathermap.org/api)
+- [Dummy Album Data](https://jsonplaceholder.typicode.com/)
 - [Clean Architecture](https://medium.com/@sazib/android-mvvm-with-clean-code-dda2bf78bb64)
 - [Json from Asset](https://medium.com/@sazib/read-json-file-from-assets-346f624faf92)
 - [Koin DI](https://insert-koin.io/)
